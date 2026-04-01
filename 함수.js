@@ -12,9 +12,9 @@
 // - 함수는 호출 되어야 수행이 됨
 //console.log(sum(100, 300));
 
-function sum(a, b) {
-  return a + b;
-}
+// function sum(a, b) {
+//   return a + b;
+// }
 
 // - 함수 표현식 : 변수에 익명 함수를 할당하는 방식
 // 호이스팅 되지 되지 않음
@@ -39,9 +39,10 @@ const input = Number(prompt("정수 입력 : "));
 sumOfPrime(input);
 
 function isPrime(n) {
-  if (n < 2) return false;
+  if (n < 2) return false; // 2미만은 소수가 아님
   for (let i = 2; i < n; i++) {
-    if (n % i === 0) return false;
+    // 2 ~ 자기자신 미만까지 순회
+    if (n % i === 0) return false; // 나누어 지면 소수가 아님
   }
   return true;
 }
@@ -72,3 +73,38 @@ const sumOfPrimeExp = function (limit) {
 };
 const input2 = Number(prompt("정수 입력 : "));
 sumOfPrimeExp(input2);
+
+// 화살표 함수 : 함수 표현식을 간결하게 작ㄷ성할 수 있게 해주는 ES5 문법, React 에서 주로 사용함
+const isPrimeArrow = (n) => {
+  let sum = 0;
+  for (let i = 2; i < limit; i++) {
+    if (isPrime(i)) sum += i;
+  }
+  console.log(sum);
+};
+
+const sumOfPrimeArrow = (limit) => {
+  let sum = 0;
+  for (let i = 2; i < limit; i++) {
+    if (isPrime(i)) sum += i;
+  }
+  console.log(sum);
+};
+
+const input3 = Number(prompt("정수 입력 : "));
+sumOfPrimeArrow(input3);
+
+// 즉시 실행 함수(IIEF) : 전역 영역을 오염 시키지 않기 위해서 사용
+(function () {
+  let x = 300;
+  let y = 400;
+  console.log(x, y);
+})();
+
+// 기본값 할당
+// function sum(a = 10, b = 10) {
+//   return a + b;
+// }
+
+// 익명의 함수를 선언하고 호출까지를 한번에 구현
+console.log(((a = 10, b = 10) => a + b)(100, 200));
