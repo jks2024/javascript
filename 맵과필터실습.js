@@ -37,6 +37,5 @@ const employees = [
 
 const result = employees
   .filter((e) => e.active && e.salary >= 50000000)
-  .map((e) => `이름 : ${e.name}, 연봉 : ${e.salary}`);
-
-console.log(result);
+  .map((e) => `이름 : ${e.name}, 연봉 : ${e.salary}`)
+  .forEach((e) => console.log(e));
